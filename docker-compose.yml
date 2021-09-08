@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  client:
+    build: ./dockerfile
+    container_name: go-websocket-client
+    tty: true
+    volumes:
+      - ./client:/app
+    working_dir: /app
+    ports: 
+      - 0.0.0.0:9090:80
+  server:
+    image: golang
+    container_name: go-websocket-server
+    tty: true
+    volumes:
+      - ./server:/app
+    working_dir: /app
+    ports: 
+      - 0.0.0.0:9091:80
